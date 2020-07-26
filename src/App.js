@@ -1,13 +1,11 @@
-import React from "react";
-import "App.css";
-import Button from "@material-ui/core/Button";
+import React from 'react';
+import 'App.css';
+import BoxOverrideButton from 'ui/BoxOverrideButton';
 
 function App() {
   return (
     <div className="App">
-      <Button variant="contained" color="primary">
-        Hello world
-      </Button>
+      <BoxOverrideButton />
     </div>
   );
 }
