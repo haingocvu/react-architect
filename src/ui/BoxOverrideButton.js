@@ -17,11 +17,18 @@ import { toast } from 'react-toastify';
 
 function BoxOverrideButton(props) {
   function handleClick() {
-    toast.success('Hello world');
+    toast.success('Hello world', {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
   }
   return (
     <>
-      <Box bgcolor="purple" abc="abc" onClick={handleClick}>
+      <Box {...props} bgcolor="purple" abc="abc" onClick={handleClick}>
         {props => (
           <Button {...props} variant="contained" color="primary">
             Hello world

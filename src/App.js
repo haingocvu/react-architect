@@ -1,13 +1,13 @@
 import React from 'react';
-import 'App.css';
-import BoxOverrideButton from 'ui/BoxOverrideButton';
 import { ToastContainer } from 'react-toastify';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import 'react-toastify/dist/ReactToastify.css';
-
+import 'App.css';
+import MyGrid from 'ui/Grid';
 function App() {
   return (
     <div className="App">
-      <BoxOverrideButton />
+      <CssBaseline />
       <ToastContainer
         position="top-right"
         autoClose={2000}
@@ -16,6 +16,7 @@ function App() {
         pauseOnHover={true}
         draggable={true}
       />
+      <MyGrid />
     </div>
   );
 }
