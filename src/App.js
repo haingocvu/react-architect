@@ -4,9 +4,10 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import 'react-toastify/dist/ReactToastify.css';
 import 'App.css';
 import MyGrid from 'ui/Grid';
+import Box from '@material-ui/core/Box';
 function App() {
   return (
-    <div className="App">
+    <Box padding={2}>
       <CssBaseline />
       <ToastContainer
         position="top-right"
@@ -17,7 +18,7 @@ function App() {
         draggable={true}
       />
       <MyGrid />
-    </div>
+    </Box>
   );
 }
 
