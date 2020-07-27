@@ -3,8 +3,9 @@ import { ToastContainer } from 'react-toastify';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import 'react-toastify/dist/ReactToastify.css';
 import 'App.css';
-import MyGrid from 'ui/Grid';
 import Box from '@material-ui/core/Box';
+import MyHidden from 'ui/Hidden';
+
 function App() {
   return (
     <Box padding={2}>
@@ -17,7 +18,7 @@ function App() {
         pauseOnHover={true}
         draggable={true}
       />
-      <MyGrid />
+      <MyHidden />
     </Box>
   );
 }
