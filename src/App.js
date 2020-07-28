@@ -4,7 +4,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import 'react-toastify/dist/ReactToastify.css';
 import 'App.css';
 import Box from '@material-ui/core/Box';
-import MyButton from 'ui/Button';
+import MyButtonGroup from 'ui/ButtonGroup';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         pauseOnHover={true}
         draggable={true}
       />
-      <MyButton />
+      <MyButtonGroup />
     </Box>
   );
 }
