@@ -4,7 +4,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import 'react-toastify/dist/ReactToastify.css';
 import 'App.css';
 import Box from '@material-ui/core/Box';
-import MyButtonGroup from 'ui/ButtonGroup';
+import MyCheckbox from 'ui/Checkbox';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         pauseOnHover={true}
         draggable={true}
       />
-      <MyButtonGroup />
+      <MyCheckbox />
     </Box>
   );
 }
