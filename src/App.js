@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'App.css';
 import Box from '@material-ui/core/Box';
-import TextField from 'ui/TextField';
+import MaterialUIForm from 'containers/MaterialUIForm';
 
 registerLocale('vi', vi);
 
@@ -25,7 +25,7 @@ function App() {
         pauseOnHover={true}
         draggable={true}
       />
-      <TextField />
+      <MaterialUIForm />
     </Box>
   );
 }
