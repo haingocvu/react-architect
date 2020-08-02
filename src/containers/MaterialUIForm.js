@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core';
+import { withStyles, FormHelperText, FormLabel } from '@material-ui/core';
 import {
   Grid,
   FormGroup,
@@ -10,31 +10,18 @@ import {
   IconButton,
 } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
-import { useForm } from 'react-hook-form';
-import clsx from 'clsx';
+import { useForm, Controller } from 'react-hook-form';
 import styled from 'styled-components';
+import Select from 'react-select';
+import DatePicker from 'react-datepicker';
 
-const useStyle = makeStyles(theme => ({
-  buttonRoot: {
-    color: 'white',
-    backgroundColor: 'green',
-    margin: `${theme.spacing(2)}px ${theme.spacing(0)}px`,
-  },
-  label: {
-    textTransform: 'capitalize',
-  },
-  textFieldRoot: {
-    marginTop: `${theme.spacing(2)}px`,
-  },
-  textfieldLabelRoot: {
-    textTransform: 'lowercase',
-  },
-  textfieldLabelError: {
-    color: 'orange !important',
-  },
-}));
+const options = [
+  { value: 'Female', label: 'Female' },
+  { value: 'Male', label: 'Male' },
+];
 
 const StyledTextField = styled(TextField)`
+  margin-bottom: 24px;
   label.Mui-focused {
     color: green;
   }
@@ -48,9 +35,40 @@ const StyledTextField = styled(TextField)`
   }
 `;
 
+const StyledButton = withStyles({
+  root: {
+    backgroundColor: 'green',
+    '&:hover': {
+      backgroundColor: '#179f00',
+    },
+  },
+  label: {
+    textTransform: 'capitalize',
+  },
+})(Button);
+
+const StyledFormHelperText = styled(FormHelperText)`
+  margin-left: 16px;
+  margin-right: 16px;
+  color: ${props => (props.error ? '#f44336' : 'rgba(0, 0, 0, 0.54)')};
+`;
+
+const StyledFormControl = styled(FormControl)`
+  margin-bottom: 24px;
+`;
+
+const StyledFormLabel = styled(FormLabel)`
+  margin-bottom: 8px;
+`;
+
+const StyledDatePicker = styled(DatePicker)`
+  width: 100%;
+`;
+
 function MaterialUIForm() {
-  const classes = useStyle();
-  const { register, handleSubmit, errors } = useForm({ mode: 'onChange' });
+  const { register, handleSubmit, errors, control } = useForm({
+    mode: 'onChange',
+  });
   const [showVisibilityPassword, setShowVisibilityPassword] = useState(false);
   function toggleVisibilityPassword() {
     setShowVisibilityPassword(preShow => !preShow);
@@ -65,20 +83,18 @@ function MaterialUIForm() {
           <FormGroup>
             <StyledTextField
               variant="outlined"
-              className={clsx(classes.textFieldRoot)}
-              label="User name"
+              label="User name *"
               name="username"
               error={!!errors.username}
               inputRef={register({
-                required: { value: true, message: 'User name is required!' },
-                maxLength: { value: 20, message: 'Maximum length is 20' },
+                required: { value: true, message: 'user name is required!' },
+                maxLength: { value: 20, message: 'maximum length is 20' },
               })}
               helperText={errors.username && errors.username.message}
             />
-            <TextField
+            <StyledTextField
               variant="outlined"
-              className={clsx(classes.textFieldRoot)}
-              label="Password"
+              label="Password *"
               name="password"
               type={showVisibilityPassword ? 'text' : 'password'}
               error={!!errors.password}
@@ -99,30 +115,51 @@ function MaterialUIForm() {
                   </InputAdornment>
                 ),
               }}
-              InputLabelProps={{
-                classes: {
-                  root: classes.textfieldLabelRoot,
-                  error: classes.textfieldLabelError,
-                },
-              }}
               inputRef={register({
                 required: { value: true, message: 'password is required' },
                 minLength: { value: 10, message: 'minimum length is 10' },
                 maxLength: { value: 20, message: 'maximum length is 20' },
               })}
             />
-            <FormControl margin="dense">
-              <Button
-                className={clsx(classes.buttonRoot)}
-                classes={{
-                  label: classes.label,
+            <StyledFormControl>
+              <StyledFormLabel>gender *</StyledFormLabel>
+              <Controller
+                control={control}
+                as={<Select />}
+                name="gender"
+                options={options}
+                rules={{
+                  required: { value: true, message: 'gender is required' },
                 }}
-                variant="contained"
-                type="submit"
-                color="secondary"
-              >
+              />
+              <StyledFormHelperText error={errors.gender}>
+                {errors.gender && errors.gender.message}
+              </StyledFormHelperText>
+            </StyledFormControl>
+            <StyledFormControl>
+              <Controller
+                control={control}
+                name="birthday"
+                render={({ value, ...props }) => (
+                  <StyledDatePicker
+                    onChange={props.onChange}
+                    customInput={<StyledTextField label="birth day *" />}
+                    selected={value}
+                    locale="vi"
+                    dateFormat="dd/MM/yyyy"
+                    peekNextMonth
+                    showMonthDropdown
+                    showYearDropdown
+                    dropdownMode="select"
+                    withPortal
+                  />
+                )}
+              />
+            </StyledFormControl>
+            <FormControl margin="dense">
+              <StyledButton variant="contained" type="submit" color="secondary">
                 Register
-              </Button>
+              </StyledButton>
             </FormControl>
           </FormGroup>
         </form>
