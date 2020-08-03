@@ -11,6 +11,8 @@ import {
 } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import { useForm, Controller } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers';
+import * as yup from 'yup';
 import styled from 'styled-components';
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
@@ -65,9 +67,17 @@ const StyledDatePicker = styled(DatePicker)`
   width: 100%;
 `;
 
+const schema = yup.object().shape({
+  username: yup.string().required().min(6).max(18),
+  password: yup.string().required().min(6).max(18),
+  gender: yup.object().required(),
+  birthday: yup.date().required(),
+});
+
 function MaterialUIForm() {
   const { register, handleSubmit, errors, control } = useForm({
     mode: 'onChange',
+    resolver: yupResolver(schema),
   });
   const [showVisibilityPassword, setShowVisibilityPassword] = useState(false);
   function toggleVisibilityPassword() {
@@ -86,10 +96,7 @@ function MaterialUIForm() {
               label="User name *"
               name="username"
               error={!!errors.username}
-              inputRef={register({
-                required: { value: true, message: 'user name is required!' },
-                maxLength: { value: 20, message: 'maximum length is 20' },
-              })}
+              inputRef={register}
               helperText={errors.username && errors.username.message}
             />
             <StyledTextField
@@ -115,11 +122,7 @@ function MaterialUIForm() {
                   </InputAdornment>
                 ),
               }}
-              inputRef={register({
-                required: { value: true, message: 'password is required' },
-                minLength: { value: 10, message: 'minimum length is 10' },
-                maxLength: { value: 20, message: 'maximum length is 20' },
-              })}
+              inputRef={register}
             />
             <StyledFormControl mb="16px">
               <StyledFormLabel>gender *</StyledFormLabel>
@@ -128,9 +131,6 @@ function MaterialUIForm() {
                 as={<Select />}
                 name="gender"
                 options={options}
-                rules={{
-                  required: { value: true, message: 'gender is required' },
-                }}
               />
               <StyledFormHelperText error={errors.gender}>
                 {errors.gender && errors.gender.message}
@@ -140,9 +140,6 @@ function MaterialUIForm() {
               <Controller
                 control={control}
                 name="birthday"
-                rules={{
-                  required: { value: true, message: 'birthday is required' },
-                }}
                 render={({ value, ...props }) => (
                   <StyledDatePicker
                     onChange={props.onChange}
