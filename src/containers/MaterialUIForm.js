@@ -21,7 +21,7 @@ const options = [
 ];
 
 const StyledTextField = styled(TextField)`
-  margin-bottom: 24px;
+  margin-bottom: ${props => (props.mb ? props.mb : '24px')};
   label.Mui-focused {
     color: green;
   }
@@ -54,7 +54,7 @@ const StyledFormHelperText = styled(FormHelperText)`
 `;
 
 const StyledFormControl = styled(FormControl)`
-  margin-bottom: 24px;
+  margin-bottom: ${props => (props.mb ? props.mb : '24px')};
 `;
 
 const StyledFormLabel = styled(FormLabel)`
@@ -121,7 +121,7 @@ function MaterialUIForm() {
                 maxLength: { value: 20, message: 'maximum length is 20' },
               })}
             />
-            <StyledFormControl>
+            <StyledFormControl mb="16px">
               <StyledFormLabel>gender *</StyledFormLabel>
               <Controller
                 control={control}
@@ -140,10 +140,15 @@ function MaterialUIForm() {
               <Controller
                 control={control}
                 name="birthday"
+                rules={{
+                  required: { value: true, message: 'birthday is required' },
+                }}
                 render={({ value, ...props }) => (
                   <StyledDatePicker
                     onChange={props.onChange}
-                    customInput={<StyledTextField label="birth day *" />}
+                    customInput={
+                      <StyledTextField mb="0px" label="birth day *" />
+                    }
                     selected={value}
                     locale="vi"
                     dateFormat="dd/MM/yyyy"
@@ -155,6 +160,9 @@ function MaterialUIForm() {
                   />
                 )}
               />
+              <StyledFormHelperText error={errors.birthday}>
+                {errors.birthday && errors.birthday.message}
+              </StyledFormHelperText>
             </StyledFormControl>
             <FormControl margin="dense">
               <StyledButton variant="contained" type="submit" color="secondary">
