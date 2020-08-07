@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'App.css';
 import Box from '@material-ui/core/Box';
-import MaterialUIForm from 'containers/MaterialUIForm';
+import MyBreadCrumbs from 'ui/BreadCrumbs';
 
 registerLocale('vi', vi);
 
@@ -25,7 +25,7 @@ function App() {
         pauseOnHover={true}
         draggable={true}
       />
-      <MaterialUIForm />
+      <MyBreadCrumbs />
     </Box>
   );
 }
