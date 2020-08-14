@@ -15,9 +15,10 @@ const useStyle = makeStyles(theme => ({
 
 function StyledHookApi(props) {
   const classes = useStyle(props);
+  const { color, children, ...other } = props;
   return (
-    <Button variant="outlined" color="primary" className={classes.root}>
-      Hoc Api
+    <Button {...other} className={classes.root}>
+      {children}
     </Button>
   );
 }

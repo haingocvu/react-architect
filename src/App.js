@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'App.css';
 import Box from '@material-ui/core/Box';
-import StyledApi from 'styled/StyledApi';
+import StyledHocApi from 'styled/StyledHocApi';
 
 registerLocale('vi', vi);
 
@@ -25,7 +25,9 @@ function App() {
         pauseOnHover={true}
         draggable={true}
       />
-      <StyledApi />
+      <StyledHocApi color="green" variant="outlined">
+        Styled Hoc API
+      </StyledHocApi>
     </Box>
   );
 }

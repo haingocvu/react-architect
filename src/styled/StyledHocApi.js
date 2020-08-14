@@ -4,10 +4,10 @@ import { Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 function StyledHocApi(props) {
-  const { classes } = props;
+  const { classes, children, color, ...other } = props;
   return (
-    <Button variant="outlined" className={classes.root}>
-      Styled Hoc
+    <Button {...other} className={classes.root}>
+      {children}
     </Button>
   );
 }
