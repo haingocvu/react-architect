@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
 import { styled } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 
 const StyledButton = styled(Button)(props => {
   console.log(props);
@@ -15,11 +16,23 @@ const StyledButton = styled(Button)(props => {
     '& span': {
       color: 'yellow',
     },
+    '& .MuiButton-label': {
+      textTransform: props.case || 'inherit',
+      margin: props.theme.spacing(2),
+    },
   };
 });
 
+StyledButton.propTypes = {
+  case: PropTypes.string,
+};
+
 function StyledWithStyledComponentAPI() {
-  return <StyledButton>Style With Styled-Component API</StyledButton>;
+  return (
+    <StyledButton case="lowercase">
+      Style With Styled-Component API
+    </StyledButton>
+  );
 }
 
 export default StyledWithStyledComponentAPI;
