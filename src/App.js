@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'App.css';
 import Box from '@material-ui/core/Box';
-import StyledWithHookButton from 'styled/StyledWithHookButton';
+import StyledApi from 'styled/StyledApi';
 
 registerLocale('vi', vi);
 
@@ -25,7 +25,7 @@ function App() {
         pauseOnHover={true}
         draggable={true}
       />
-      <StyledWithHookButton height={50} case="lowercase" />
+      <StyledApi />
     </Box>
   );
 }
