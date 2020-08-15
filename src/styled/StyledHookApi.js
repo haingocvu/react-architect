@@ -1,11 +1,10 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 
 const useStyle = makeStyles(theme => ({
   root: {
-    color: props => props.color,
+    color: props => props.color || theme.color,
     padding: theme.spacing(2),
     '& .MuiButton-label': {
       textTransform: 'lowercase',
@@ -14,6 +13,8 @@ const useStyle = makeStyles(theme => ({
 }));
 
 function StyledHookApi(props) {
+  const theme = useTheme();
+  console.log(theme);
   const classes = useStyle(props);
   const { color, children, ...other } = props;
   return (
@@ -22,9 +23,5 @@ function StyledHookApi(props) {
     </Button>
   );
 }
-
-StyledHookApi.propTypes = {
-  color: PropTypes.oneOf(['green', 'yellow']).isRequired,
-};
 
 export default StyledHookApi;
