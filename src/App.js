@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'App.css';
 import Box from '@material-ui/core/Box';
-import StyledHookApi from 'styled/StyledHookApi';
+import StyledOrder from 'styled/StyledOrder';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 registerLocale('vi', vi);
@@ -37,7 +37,7 @@ function App() {
             pauseOnHover={true}
             draggable={true}
           />
-          <StyledHookApi variant="outlined">Styled Hoc API</StyledHookApi>
+          <StyledOrder variant="outlined">Styled Hoc API</StyledOrder>
         </Box>
       </ThemeProvider>
     </ThemeProvider>
