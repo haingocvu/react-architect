@@ -6,9 +6,10 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'App.css';
-import Box from '@material-ui/core/Box';
 import HybridCss from 'styled/HybridCss';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import MenuBar from 'ui/MenuBar';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 registerLocale('vi', vi);
 
@@ -20,14 +21,14 @@ const theme = createMuiTheme({
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <ThemeProvider
-        theme={outerTheme => ({
-          ...outerTheme,
-          color: 'green',
-        })}
-      >
-        <Box padding={2}>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <ThemeProvider
+          theme={outerTheme => ({
+            ...outerTheme,
+            color: 'green',
+          })}
+        >
           <CssBaseline />
           <ToastContainer
             position="top-right"
@@ -37,10 +38,11 @@ function App() {
             pauseOnHover={true}
             draggable={true}
           />
+          <MenuBar />
           <HybridCss />
-        </Box>
+        </ThemeProvider>
       </ThemeProvider>
-    </ThemeProvider>
+    </Router>
   );
 }
 
