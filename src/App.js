@@ -8,7 +8,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import 'App.css';
 import HybridCss from 'styled/HybridCss';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import MenuBar from 'ui/MenuBar';
+import ListRouter from 'ui/ListRouter';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 registerLocale('vi', vi);
@@ -38,7 +38,7 @@ function App() {
             pauseOnHover={true}
             draggable={true}
           />
-          <MenuBar />
+          <ListRouter />
           <HybridCss />
         </ThemeProvider>
       </ThemeProvider>
