@@ -7,9 +7,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'App.css';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import MaterialUIForm from 'containers/MaterialUIForm';
+import Drawer from 'ui/Drawer';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Box } from '@material-ui/core';
 
 registerLocale('vi', vi);
 
@@ -38,9 +37,7 @@ function App() {
             pauseOnHover={true}
             draggable={true}
           />
-          <Box m={8}>
-            <MaterialUIForm />
-          </Box>
+          <Drawer />
         </ThemeProvider>
       </ThemeProvider>
     </Router>
