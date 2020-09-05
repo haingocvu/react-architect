@@ -132,7 +132,7 @@ function MaterialUIForm() {
                 name="gender"
                 options={options}
               />
-              <StyledFormHelperText error={errors.gender}>
+              <StyledFormHelperText error={!!errors.gender}>
                 {errors.gender && errors.gender.message}
               </StyledFormHelperText>
             </StyledFormControl>
@@ -157,7 +157,7 @@ function MaterialUIForm() {
                   />
                 )}
               />
-              <StyledFormHelperText error={errors.birthday}>
+              <StyledFormHelperText error={!!errors.birthday}>
                 {errors.birthday && errors.birthday.message}
               </StyledFormHelperText>
             </StyledFormControl>

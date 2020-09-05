@@ -6,10 +6,10 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'App.css';
-import HybridCss from 'styled/HybridCss';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import ListRouter from 'ui/ListRouter';
+import MaterialUIForm from 'containers/MaterialUIForm';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Box } from '@material-ui/core';
 
 registerLocale('vi', vi);
 
@@ -38,8 +38,9 @@ function App() {
             pauseOnHover={true}
             draggable={true}
           />
-          <ListRouter />
-          <HybridCss />
+          <Box m={8}>
+            <MaterialUIForm />
+          </Box>
         </ThemeProvider>
       </ThemeProvider>
     </Router>
