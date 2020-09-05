@@ -95,6 +95,7 @@ function MaterialUIForm() {
               variant="outlined"
               label="User name *"
               name="username"
+              autoComplete="username"
               error={!!errors.username}
               inputRef={register}
               helperText={errors.username && errors.username.message}
@@ -103,6 +104,7 @@ function MaterialUIForm() {
               variant="outlined"
               label="Password *"
               name="password"
+              autoComplete="current-password"
               type={showVisibilityPassword ? 'text' : 'password'}
               error={!!errors.password}
               helperText={errors.password && errors.password.message}
