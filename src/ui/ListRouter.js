@@ -11,18 +11,25 @@ const useStyles = makeStyles({
   },
 });
 
-function ListRouter() {
+function ListRouter(onClick, ...props) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <BrowserRouter>
         <List>
           <ListItemLink
+            onClick={onClick}
             to="/react-hook-form"
             icon={<Home />}
             primary="react hook form"
+            onc
           />
-          <ListItemLink to="/home" icon={<Home />} primary="home" />
+          <ListItemLink
+            onClick={onClick}
+            to="/home"
+            icon={<Home />}
+            primary="home"
+          />
         </List>
       </BrowserRouter>
     </div>

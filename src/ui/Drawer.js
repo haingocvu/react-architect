@@ -5,27 +5,19 @@ import ListRouter from 'ui/ListRouter';
 
 function Drawer() {
   const [isOpen, setIsOpen] = React.useState(false);
-  function handleCloseDrawer() {
-    setIsOpen(false);
-  }
-  function handleOpenDrawer() {
-    setIsOpen(true);
-  }
-  function toggleDrawer() {
-    setIsOpen(isOpen => !isOpen);
-  }
+  const toggleDrawer = open => () => setIsOpen(open);
   return (
     <React.Fragment>
-      <IconButton aria-label="drawer" onClick={toggleDrawer}>
+      <IconButton aria-label="drawer" onClick={toggleDrawer(true)}>
         <Menu />
-        <SwipeableDrawer
-          open={isOpen}
-          onOpen={handleOpenDrawer}
-          onClose={handleCloseDrawer}
-        >
-          <ListRouter />
-        </SwipeableDrawer>
       </IconButton>
+      <SwipeableDrawer
+        open={isOpen}
+        onOpen={toggleDrawer(true)}
+        onClose={toggleDrawer(false)}
+      >
+        <ListRouter onClick={toggleDrawer(false)} />
+      </SwipeableDrawer>
     </React.Fragment>
   );
 }
