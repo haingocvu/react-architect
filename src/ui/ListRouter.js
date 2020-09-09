@@ -1,9 +1,8 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { List } from '@material-ui/core';
 import ListItemLink from 'ui/ListItemLink';
-import { Home } from '@material-ui/icons';
+import { Home, Code as CodeIcon } from '@material-ui/icons';
 
 const useStyles = makeStyles({
   root: {
@@ -11,27 +10,25 @@ const useStyles = makeStyles({
   },
 });
 
-function ListRouter(onClick, ...props) {
+function ListRouter({ onClick, ...props }) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <BrowserRouter>
-        <List>
-          <ListItemLink
-            onClick={onClick}
-            to="/react-hook-form"
-            icon={<Home />}
-            primary="react hook form"
-            onc
-          />
-          <ListItemLink
-            onClick={onClick}
-            to="/home"
-            icon={<Home />}
-            primary="home"
-          />
-        </List>
-      </BrowserRouter>
+      <List>
+        <ListItemLink
+          onClick={onClick}
+          to="/home"
+          icon={<Home />}
+          primary="home"
+        />
+        <ListItemLink
+          onClick={onClick}
+          to="/react-hook-form"
+          icon={<CodeIcon />}
+          primary="react hook form"
+          onc
+        />
+      </List>
     </div>
   );
 }

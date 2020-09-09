@@ -8,7 +8,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 import 'App.css';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Drawer from 'ui/Drawer';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import MaterialUIForm from 'containers/MaterialUIForm';
 
 registerLocale('vi', vi);
 
@@ -38,6 +39,11 @@ function App() {
             draggable={true}
           />
           <Drawer />
+          <Switch>
+            <Route path="/react-hook-form">
+              <MaterialUIForm />
+            </Route>
+          </Switch>
         </ThemeProvider>
       </ThemeProvider>
     </Router>

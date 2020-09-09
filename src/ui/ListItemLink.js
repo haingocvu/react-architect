@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { Link as RouterLink } from 'react-router-dom';
 
-function ListItemLink(onClick, ...props) {
-  const { icon, primary, to } = props;
+function ListItemLink({ onClick, ...itemProps }) {
+  const { icon, primary, to } = itemProps;
   const renderLink = React.useMemo(
     () =>
       React.forwardRef((itemProps, ref) => (
