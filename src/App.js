@@ -9,7 +9,7 @@ import 'App.css';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Drawer from 'ui/Drawer';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import MaterialUIForm from 'containers/MaterialUIForm';
+import ReactHookForm from 'pages/ReactHookForm';
 
 registerLocale('vi', vi);
 
@@ -41,7 +41,7 @@ function App() {
           <Drawer />
           <Switch>
             <Route path="/react-hook-form">
-              <MaterialUIForm />
+              <ReactHookForm />
             </Route>
           </Switch>
         </ThemeProvider>

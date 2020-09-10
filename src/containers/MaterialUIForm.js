@@ -16,6 +16,7 @@ import * as yup from 'yup';
 import styled from 'styled-components';
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
+import { useParams } from 'react-router-dom';
 
 const options = [
   { value: 'Female', label: 'Female' },
@@ -75,6 +76,7 @@ const schema = yup.object().shape({
 });
 
 function MaterialUIForm() {
+  const { topicId } = useParams();
   const { register, handleSubmit, errors, control } = useForm({
     mode: 'onChange',
     resolver: yupResolver(schema),
@@ -91,6 +93,11 @@ function MaterialUIForm() {
       <Grid item xs={6}>
         <form onSubmit={handleSubmit(_handleSubmit)}>
           <FormGroup>
+            <StyledTextField
+              variant="outlined"
+              label="Params"
+              defaultValue={topicId}
+            />
             <StyledTextField
               variant="outlined"
               label="User name *"
